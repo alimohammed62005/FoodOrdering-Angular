@@ -77,15 +77,13 @@
       <span class="text-green-600">{{ totalPrice | number:'1.2-2' }} EGP</span>
     </div>
   </div>
-
-  <!-- Action Buttons -->
   <div class="flex justify-between max-w-2xl ml-auto">
     <button (click)="back()" class="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
       BACK
     </button>
     <button (click)="placeOrder()" class="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600"
             [disabled]="isLoading">
-      {{ isLoading ? 'Processing...' : 'CHECKOUT' }}
+      {{ isLoading ? 'Processing...' : 'Order Now' }}
     </button>
   </div>
 </div>
