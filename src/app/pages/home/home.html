@@ -173,65 +173,88 @@ src="/Images/HomePage.png"
     </div>
   </div>
 </section>
-    <section class="customers" id="custmoers">
-        <div class="heading">
-            <h2>Our customer's</h2>
-        </div>
-        <!--container-->
-        <div class="custmoers-container">
-            <div class="box">
-                <div class="stars">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, qui. Repellendus, reprehenderit! Perspiciatis, consequuntur doloremque</p>
-                <h2>Yasin Arafat</h2>
-                <img src="/Images/rev1.jpg" alt="">
-            </div>
-            <div class="box">
-                <div class="stars">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, qui. Repellendus, reprehenderit! Perspiciatis, consequuntur doloremque</p>
-                <h2>Ahmed yasser</h2>
-                <img src="/Images/rev2.jpg" alt="">
-            </div>
-            <div class="box">
-                <div class="stars">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, qui. Repellendus, reprehenderit! Perspiciatis, consequuntur doloremque</p>
-                <h2>Monica Arafat</h2>
-                <img src="/Images/rev3.jpg" alt="">
-            </div>
-        </div>
-    </section>
-<section class="w-full py-20 bg-black text-white text-center">
-  <div class="max-w-4xl mx-auto px-4 animate-slide-down">
+<section class="customers" id="custmoers">
+  <div class="heading">
+    <h2>Customer Reviews</h2>
+  </div>
 
-    <h2 class="text-4xl font-bold mb-6">
-      Are You Ready To Order?
-    </h2>
-    <p class="text-gray-300 mb-8">
-      Explore restaurants and your favorite meals now.
-    </p>
-<button
-  type="button"
-  (click)="scrollToSection('restaurants'); $event.preventDefault()"
-  class="bg-red-600 px-8 py-3 rounded-full font-bold hover:bg-red-700 transition"
->
-  Get Started
-</button>
+  <div class="custmoers-container">
+    <div class="box">
+      <div class="stars">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star-half'></i>
+      </div>
+
+      <img src="/Images/rev1.jpg" alt="Customer">
+
+      <p>
+        The service was fast and the food quality was amazing.  
+        I will definitely order again.
+      </p>
+
+      <h2>Yasin Arafat</h2>
+    </div>
+
+    <div class="box">
+      <div class="stars">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bx-star'></i>
+        <i class='bx bx-star'></i>
+      </div>
+
+      <img src="/Images/rev2.jpg" alt="Customer">
+
+      <p>
+        Very easy ordering process and quick delivery.  
+        Great experience overall.
+      </p>
+
+      <h2>Ahmed Yasser</h2>
+    </div>
+
+    <div class="box">
+      <div class="stars">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+      </div>
+
+      <img src="/Images/rev3.jpg" alt="Customer">
+
+      <p>
+        Delicious meals and excellent customer service.  
+        Highly recommended for everyone.
+      </p>
+
+      <h2>Monica Arafat</h2>
+    </div>
   </div>
 </section>
+
+<section class="w-full py-20 bg-black text-white text-center">
+  <div class="max-w-4xl mx-auto px-4 animate-slide-down">
+    <h2 class="text-4xl font-bold mb-6">
+      Ready To Place Your Order?
+    </h2>
+
+    <p class="text-gray-300 mb-8">
+      Discover the best restaurants and enjoy your favorite meals today.
+    </p>
+
+    <button
+      type="button"
+      (click)="scrollToSection('restaurants'); $event.preventDefault()"
+      class="bg-red-600 px-8 py-3 rounded-full font-bold hover:bg-red-700 transition"
+    >
+      Get Started
+    </button>
+  </div>
+</section>
+
