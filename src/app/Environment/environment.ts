@@ -1,4 +1,4 @@
 export  const Environment ={
-    base:"https://localhost:7211/api/",
-    staticfiles:"https://localhost:7211/"
+    base:"https://foodordering.runasp.net/api/",
+    staticfiles:"https://foodordering.runasp.net/"
 }
