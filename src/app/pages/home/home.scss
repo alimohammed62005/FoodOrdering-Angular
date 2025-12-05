@@ -2,6 +2,44 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.custmoers-container { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.custmoers-container .box {
+    padding: 20px;
+    border-radius: 0.5rem;
+    text-align: center;
+    background: rgb(212, 206, 206);
+}
+
+.stars .bx {
+    color: var(--main-color);
+}
+
+.custmoers-container .box p {
+    font-size: 0.938rem;
+}
+
+.custmoers-container .box h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.5rem;
+}
+
+.custmoers-container .box img { 
+    width: 40%;
+    height: 40%;
+    border-radius: 60%;
+    object-fit: cover;
+}
+
+.custmoers-container .box:hover {
+    background: var(--second-color);
+}
 .script-font {
   font-family: 'Great Vibes', cursive;
 }
