@@ -101,20 +101,22 @@ button:disabled {
   75% { transform: translateX(3px); }
   100% { transform: translateX(0); }
 }
-
 @media (max-width: 768px) {
+
   .grid {
     display: grid;
     grid-template-columns: 1fr !important;
-    gap: 1rem;
+    width: 100%;
   }
 
   .grid > div {
-    width: 100%;
+    width: 100% !important;
   }
 
+  label,
   input,
   textarea {
-    width: 100%;
+    width: 100% !important;
+    display: block;
   }
 }
