@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { MenuItem } from '../../interfaces/menu-item';
 import { MenuItemService } from '../../services/menu-item/menu-item';
-
+import { Environment } from '../../Environment/environment';
 @Component({
   selector: 'app-menu',
   imports: [CommonModule],
@@ -18,8 +17,7 @@ export class Menu implements OnInit {
   menuItems: MenuItem[] = [];
   selectedItems: MenuItem[] = [];
   totalPrice: number = 0;
-  imagePrefix = 'https://localhost:7211/';
-  
+  ImageURL=Environment.staticfiles  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -74,10 +72,5 @@ export class Menu implements OnInit {
         restaurantId: this.restaurantId
       }
     });
-  }
-  getImageUrl(fullPath: string): string {
-    const index = fullPath.indexOf('images');
-    const relativePath = index >= 0 ? fullPath.substring(index) : '';
-    return this.imagePrefix + relativePath;
   }
 }
