@@ -20,6 +20,7 @@ import { RestaurantService } from '../../services/restaurant/restaurant';
 export class Home implements OnInit {
   cities: City[] = [];
   restaurants: Restaurant[] = [];
+  ImageURL=Environment.staticfiles
 scrollToSection(id: string) {
   const element = document.getElementById(id);
   if (element) {
