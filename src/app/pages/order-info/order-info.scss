@@ -22,6 +22,8 @@ textarea {
   border-radius: 12px;
   transition: all 0.25s ease;
   background: #fafafa;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 textarea {
@@ -86,7 +88,6 @@ button:disabled {
     transform: translateY(30px);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
@@ -99,4 +100,21 @@ button:disabled {
   50% { transform: translateX(-3px); }
   75% { transform: translateX(3px); }
   100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .grid > div {
+    width: 100%;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+  }
 }
