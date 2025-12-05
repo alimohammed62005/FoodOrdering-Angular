@@ -1,0 +1,91 @@
+<div class="min-h-screen p-6 bg-white text-gray-800">
+  <h1 class="text-3xl font-bold mb-4 text-gray-800 border-b pb-2">YOUR DATA</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div class="flex items-start gap-2">
+      <i class="fas fa-user text-orange-500 text-xl mt-1"></i>
+      <div>
+        <p class="font-bold">Name</p>
+        <p>{{ customer.fullName }}</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-2">
+      <i class="fas fa-phone text-orange-500 text-xl mt-1"></i>
+      <div>
+        <p class="font-bold">Phone</p>
+        <p>{{ customer.phone }}</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-2">
+      <i class="fas fa-envelope text-orange-500 text-xl mt-1"></i>
+      <div>
+        <p class="font-bold">E-mail</p>
+        <p>{{ customer.email }}</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-2">
+      <i class="fas fa-map-marker-alt text-orange-500 text-xl mt-1"></i>
+      <div>
+        <p class="font-bold">Address</p>
+        <p>{{ customer.address }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Table -->
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border border-gray-300">
+      <thead class="bg-gray-100 text-left">
+        <tr>
+          <th class="p-3">Product</th>
+          <th class="p-3">Price</th>
+          <th class="p-3">Quantity</th>
+          <th class="p-3">Total</th>
+          <th class="p-3 text-center">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of selectedItems; let i = index" class="border-b hover:bg-gray-50">
+          <td class="p-3 font-semibold">{{ item.itemName }}</td>
+          <td class="p-3">{{ item.price | number:'1.2-2' }} EGP</td>
+          <td class="p-3 flex items-center gap-2">
+            <button (click)="decreaseQuantity(i)" class="px-2 py-1 bg-gray-200 rounded">-</button>
+            <input type="number" [(ngModel)]="item.quantity" (ngModelChange)="recalculateTotal()"
+                   min="1" class="w-12 text-center border border-gray-300 rounded" />
+            <button (click)="increaseQuantity(i)" class="px-2 py-1 bg-gray-200 rounded">+</button>
+          </td>
+          <td class="p-3 font-medium">
+            {{ (item.quantity ?? 1) * item.price | number:'1.2-2' }} EGP
+          </td>
+          <td class="p-3 text-center">
+            <button (click)="removeItem(i)" class="text-red-600 text-lg hover:text-red-800">
+              &times;
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Order Summary -->
+  <div class="bg-gray-50 border rounded-md p-4 mb-6 max-w-2xl ml-auto">
+    <div class="flex justify-between items-center text-lg mb-2">
+      <span>Subtotal</span>
+      <span class="font-semibold">{{ totalPrice | number:'1.2-2' }} EGP</span>
+    </div>
+    <div class="flex justify-between items-center text-xl font-bold border-t pt-2">
+      <span>Total</span>
+      <span class="text-green-600">{{ totalPrice | number:'1.2-2' }} EGP</span>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex justify-between max-w-2xl ml-auto">
+    <button (click)="back()" class="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
+      BACK
+    </button>
+    <button (click)="placeOrder()" class="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600"
+            [disabled]="isLoading">
+      {{ isLoading ? 'Processing...' : 'CHECKOUT' }}
+    </button>
+  </div>
+</div>

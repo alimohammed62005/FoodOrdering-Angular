@@ -1,0 +1,194 @@
+<section class="w-full h-screen flex items-center justify-center relative bg-black overflow-hidden">
+<img
+src="/Images/HomePage.png"
+  alt="Food background"
+  class="absolute inset-0 w-full h-full object-cover -z-0 scale-105"
+/>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent z-10"></div>
+  <div class="relative z-20 min-h-screen flex flex-col items-center justify-center text-center text-white w-full px-4">
+
+    <h1 class="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-snug max-w-4xl mb-6 animate-slide-down">
+      <span>Order </span>
+      <span class="script-font text-yellow-400">Food Online</span> From The
+      <br />
+      <span>Best Restaurants</span>
+    </h1>
+<form
+  class="search-form w-full max-w-3xl flex flex-col sm:flex-row gap-4 p-4
+         bg-white/95 border-2 border-yellow-400 rounded-2xl shadow-xl"
+  (submit)="onSearch(); $event.preventDefault()"
+>
+  <div class="relative flex-grow">
+    <input
+      [(ngModel)]="searchTerm"
+      name="searchTerm"
+      type="text"
+      placeholder="Restaurant Name"
+      class="w-full px-5 py-3 pl-11 outline-none
+             bg-white text-black rounded-xl border-2 border-gray-200
+             focus:border-red-500 focus:ring-2 focus:ring-red-200
+             transition-all duration-300"
+    />
+    <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z"
+        />
+      </svg>
+    </div>
+  </div>
+  <div class="relative w-full sm:w-44">
+    <select
+      [(ngModel)]="selectedCityId"
+      name="selectedCityId"
+      class="appearance-none w-full px-4 py-3 pr-10
+             bg-white border-2 border-gray-200
+             rounded-xl text-black font-medium
+             focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200
+             hover:border-red-400 transition-all duration-300"
+    >
+      <option [ngValue]="null">Select City</option>
+      <option *ngFor="let city of cities" [ngValue]="city.cityId">
+        {{ city.name }}
+      </option>
+    </select>
+    <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+      <svg
+        class="w-5 h-5 text-gray-500"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </div>
+  </div>
+  <button
+    (click)="onSearch()"
+    class="group relative w-full sm:w-auto px-8 py-3 
+           bg-gradient-to-r from-red-600 to-orange-500 
+           text-white font-bold tracking-wider uppercase
+           rounded-xl shadow-lg 
+           hover:from-red-700 hover:to-orange-600
+           transition-all duration-300 transform hover:scale-105
+           focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2
+           flex items-center justify-center gap-2"
+  >
+    <svg 
+      class="w-5 h-5 transform group-hover:rotate-12 transition duration-300"
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z"
+      />
+    </svg>
+    <span>Search</span>
+  </button>
+</form>
+  </div>
+</section>
+<section id="restaurants"
+  *ngIf="restaurants && restaurants.length > 0"
+  class="w-full py-20 bg-gradient-to-b from-gray-100 to-white"
+>
+  <div class="max-w-7xl mx-auto px-6 animate-slide-down">
+
+    <h2
+      class="text-center text-4xl font-extrabold mb-16
+             bg-gradient-to-r from-red-600 to-orange-500
+             text-transparent bg-clip-text"
+    >
+      Restaurants
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+
+      <div
+        *ngIf="isLoading"
+        class="col-span-full flex justify-center items-center text-gray-600 text-lg"
+      >
+        Loading restaurants...
+      </div>
+      <div
+        *ngFor="let restaurant of restaurants"
+        class="w-full max-w-sm bg-white rounded-3xl overflow-hidden
+               shadow-xl hover:shadow-2xl transition-all duration-300
+               transform hover:-translate-y-2 flex flex-col"
+      >
+        <div class="relative">
+          <img
+            [src]="getImageUrl(restaurant.imageUrl)"
+            alt="Restaurant"
+            class="w-full h-64 object-cover"
+          />
+
+          <div
+            class="absolute top-4 right-4
+                   bg-white px-3 py-1 rounded-full
+                   text-sm font-bold shadow"
+          >
+            ⭐ 5.0
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+<h3
+  class="text-xl font-extrabold mt-auto w-full text-center
+         bg-gradient-to-r from-black to-gray-600
+         text-transparent bg-clip-text">
+  {{ restaurant.restaurantName }}
+</h3>
+          <p   class="text-x8 font-bold mt-auto w-full text-center
+         bg-gradient-to-r from-black to-gray-400
+         text-transparent bg-clip-text">
+            {{ restaurant.description || 'No description available.' }}
+          </p>
+          <button
+            (click)="openMenu(restaurant.restaurantId)"
+  class="bg-orange-600 px-8 py-3 rounded-full font-bold hover:bg-red-700 transition"
+>
+            اعرض المنتجات
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<section class="w-full py-20 bg-black text-white text-center">
+
+  <div class="max-w-4xl mx-auto px-4 animate-slide-down">
+
+    <h2 class="text-4xl font-bold mb-6">
+      Are You Ready To Order?
+    </h2>
+    <p class="text-gray-300 mb-8">
+      Explore restaurants and your favorite meals now.
+    </p>
+<button
+  type="button"
+  (click)="scrollToSection('restaurants'); $event.preventDefault()"
+  class="bg-red-600 px-8 py-3 rounded-full font-bold hover:bg-red-700 transition"
+>
+  Get Started
+</button>
+  </div>
+</section>

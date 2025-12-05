@@ -1,0 +1,27 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.script-font {
+  font-family: 'Great Vibes', cursive;
+}
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.8s ease-out;
+}
+
+@media (max-width: 640px) {
+  .search-form {
+    border-radius: 14px;
+  }
+}

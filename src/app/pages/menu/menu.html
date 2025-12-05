@@ -1,0 +1,51 @@
+<div class="min-h-screen bg-gray-50 p-6">
+  <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Select Items from Menu</h1>
+
+  <div class="max-w-6xl mx-auto">
+    <div *ngIf="menuItems.length === 0" class="text-center col-span-full text-gray-500 py-12">
+      <div class="text-lg">No items available for this restaurant.</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div *ngFor="let item of menuItems; let i = index" 
+           (click)="toggleSelection(item)" 
+           class="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border-2 relative"
+           [class.border-orange-400]="selectedItems.includes(item)"
+           [class.border-gray-200]="!selectedItems.includes(item)">
+        
+        <div class="flex min-h-[140px]">
+          <div class="w-32 bg-gray-200 flex-shrink-0 relative overflow-hidden rounded-l-lg">
+            <img [src]="getImageUrl(item.imageUrl)"
+                 [alt]="item.itemName"
+                 class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1 p-4 flex flex-col justify-between relative min-h-[140px]">
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <input type="checkbox" 
+                       [checked]="selectedItems.includes(item)"
+                       class="w-5 h-5 text-orange-400 bg-white border-2 border-orange-400 rounded focus:ring-orange-400 focus:ring-2 accent-orange-400">
+                <h2 class="text-lg font-semibold text-gray-800">{{ item.itemName }}</h2>
+              </div>
+                            <div class="w-16 border-t border-orange-400 mb-3"></div>
+              
+              <p class="text-gray-600 text-sm leading-relaxed">{{ item.description }}</p>
+            </div>
+            <div class="absolute bottom-0 right-0">
+              <div class="relative bg-orange-400 text-white px-12 py-10" style="clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 0% 100%);">
+                <span class="text-lg font-bold absolute top-1/2 left-1/2 transform -translate-x-1/4 -translate-y-1/5">${{ item.price }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+       <div class="flex-1 flex justify-end">
+        <button (click)="goToCustomerInfo()" 
+                [disabled]="selectedItems.length === 0"
+                class="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-md hover:shadow-lg">
+          NEXT
+        </button>
+      </div>
+    </div>
+  </div>
